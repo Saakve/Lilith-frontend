@@ -1,0 +1,42 @@
+.App {
+    background-color: rgb(184, 209, 209);
+    width: 50vw;
+    height: 95vh;
+    margin: 1% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 3px;
+}
+
+.messageArea {
+    width: 100%;
+    flex: 9;
+    overflow-y: auto;
+}
+
+.messageArea div {
+    font-size: medium;
+}
+
+.sendArea {
+    flex: 0.3;
+    width: 100%;
+    background-color: rgb(146, 170, 170);
+}
+
+.inputStyle {
+    padding: 1%;
+    background: none!important;
+}
+
+.inputStyle input {
+    font-size: medium;
+}
+
+.inputStyle button {
+    font-size: medium;
+}
+
+

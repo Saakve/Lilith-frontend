@@ -1,9 +1,58 @@
 import './App.css'
+import "react-chat-elements/dist/main.css"
+import { Input } from "react-chat-elements"
+import { Button } from "react-chat-elements"
+import { MessageBox } from "react-chat-elements"
+import { useState } from 'react'
+
+const MESSAGE_FROM_LILITH = 1
+const MESSAGE_FROM_USER = 2
+const INITIAL_MESSAGE = {
+  type: MESSAGE_FROM_LILITH,
+  content: "Hola"
+}
 
 function App() {
 
+  const [messages, setMessages] = useState([INITIAL_MESSAGE])
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let newMessage = {
+      type: MESSAGE_FROM_USER,
+      content: event.target[0].value
+    }
+
+    setMessages(messages => messages.concat(newMessage))
+    event.target[0].value = ""
+  }
+
   return (
     <div className="App">
+      <div className='messageArea'>
+        {messages.map((message, index) => {
+          return <MessageBox
+            key={index}
+            position={message.type == MESSAGE_FROM_USER ? "right" : "left"}
+            type={"text"}
+            title={message.type == MESSAGE_FROM_USER ? "Yo" : "Lilith"}
+            text={message.content}
+          />
+        })}
+      </div>
+      <div className='sendArea'>
+        <form onSubmit={handleSubmit}>
+          <Input
+            placeholder='Ingresa tu mensaje'
+            rightButtons={<Button
+              text='Enviar'
+              title={"Enviar"}
+            />}
+            className="inputStyle"
+          />
+        </form>
+      </div>
     </div>
   )
 }
