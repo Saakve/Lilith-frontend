@@ -1,6 +1,6 @@
 import './App.css'
 import "react-chat-elements/dist/main.css"
-import { Input, Button, MessageBox, Avatar } from "react-chat-elements"
+import { Input, Button, MessageBox } from "react-chat-elements"
 import { useState } from 'react'
 import sendMessage from './services/sendMessage'
 
@@ -23,35 +23,35 @@ function App() {
       content: event.target[0].value
     }
 
+    console.log(newMessage)
+
     getResponseFromLilith(newMessage.content)
     setMessages(messages => messages.concat(newMessage))
     event.target[0].value = ""
   }
 
   const getResponseFromLilith = (message) => {
-    sendMessage(message).then( messageFromLilith => {
+    sendMessage(message).then(messageFromLilith => {
 
       let newMessage = {
         type: MESSAGE_FROM_LILITH,
         content: messageFromLilith.contenido
       }
-      
-      setMessages(messages => messages.concat(newMessage)) 
+
+      setMessages(messages => messages.concat(newMessage))
     })
+  }
+
+  const handleCleanChat = () => {
+    setMessages([])
   }
 
   return (
     <div className="App">
       <div className='lilithArea'>
-        <Avatar
-          src="https://avatars.githubusercontent.com/2"
-          alt="Lilith"
-          size="xlarge"
-          type="circle"
-          className='lilithAvatar'
-        />
+        <img src="/lilith-image.png" alt="Lilith" />
         <div id='description'>
-          <p>Cuentame tus emociones, deseos, angustias todo lo que sientes. <br/> Estoy aquí para tí 😊 </p>
+          <p>Cuentame tus emociones, deseos, angustias todo lo que sientes. <br /> Estoy aquí para tí 😊 </p>
         </div>
       </div>
       <div className='messageArea'>
@@ -66,12 +66,13 @@ function App() {
         })}
       </div>
       <div className='sendArea'>
+        <Button text='Borrar' onClick={handleCleanChat} className="cleanButton"/>
         <form onSubmit={handleSubmit}>
           <Input
             placeholder='Ingresa tu mensaje'
             rightButtons={<Button
               text='Enviar'
-              title={"Enviar"}
+              title="Enviar"
             />}
             className="inputStyle"
           />

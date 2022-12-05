@@ -19,11 +19,18 @@
     background-color: rgb(253, 253, 253);
 }
 
+img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
 
-.lilithAvatar {
-    margin: 1vh 1vw;
-    box-shadow: 3px 3px 5px tan;
-}   
+.lilithArea img {
+    object-fit: none;
+    object-position: top;
+    margin: 1vh 12px;
+    box-shadow: 0px 1px 7px tan;
+}
 
 .lilithArea #description {
     display: flex;
@@ -31,14 +38,6 @@
     justify-content: space-between;
     font-size: large;
     font-family: 'Roboto';
-}
-
-.lilithArea #description h1 {
-    margin: 0;
-}
-
-.lilithArea #description p {
-    margin: 0;
 }
 
 .messageArea {
@@ -55,6 +54,22 @@
     flex: 0.3;
     width: 100%;
     background-color: rgb(146, 170, 170);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sendArea form {
+    flex: 10;
+}
+
+.sendArea button {
+    font-size: medium;
+}
+
+.cleanButton {
+    margin: 5px;
+    margin-right: 0px;
 }
 
 .inputStyle {
@@ -65,9 +80,3 @@
 .inputStyle input {
     font-size: medium;
 }
-
-.inputStyle button {
-    font-size: medium;
-}
-
-
