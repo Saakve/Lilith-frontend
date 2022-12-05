@@ -1,8 +1,6 @@
 import './App.css'
 import "react-chat-elements/dist/main.css"
-import { Input } from "react-chat-elements"
-import { Button } from "react-chat-elements"
-import { MessageBox } from "react-chat-elements"
+import { Input, Button, MessageBox, Avatar } from "react-chat-elements"
 import { useState } from 'react'
 
 const MESSAGE_FROM_LILITH = 1
@@ -30,6 +28,18 @@ function App() {
 
   return (
     <div className="App">
+      <div className='lilithArea'>
+        <Avatar
+          src="https://avatars.githubusercontent.com/2"
+          alt="Lilith"
+          size="xlarge"
+          type="circle"
+          className='lilithAvatar'
+        />
+        <div id='description'>
+          <p>Cuentame tus emociones, deseos, angustias todo lo que sientes. <br/> Estoy aquí para tí 😊 </p>
+        </div>
+      </div>
       <div className='messageArea'>
         {messages.map((message, index) => {
           return <MessageBox

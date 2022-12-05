@@ -7,7 +7,38 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-radius: 3px;
+    border-radius: 30px;
+}
+
+.lilithArea {
+    border-radius: 5px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(253, 253, 253);
+}
+
+
+.lilithAvatar {
+    margin: 1vh 1vw;
+    box-shadow: 3px 3px 5px tan;
+}   
+
+.lilithArea #description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: large;
+    font-family: 'Roboto';
+}
+
+.lilithArea #description h1 {
+    margin: 0;
+}
+
+.lilithArea #description p {
+    margin: 0;
 }
 
 .messageArea {
