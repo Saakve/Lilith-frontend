@@ -19,24 +19,21 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const input = event.target[0] 
 
-    const content = event.target[0].value 
-
-    if(content.length == 0) {
+    if(input.value == 0) {
       setAlertShow(true)
       return
     }
 
     let newMessage = {
       type: MESSAGE_FROM_USER,
-      content: content
+      content: input.value
     }
-
-    console.log(newMessage)
 
     getResponseFromLilith(newMessage.content)
     setMessages(messages => messages.concat(newMessage))
-    content = ""
+    input.value = ""
   }
 
   const getResponseFromLilith = (message) => {
