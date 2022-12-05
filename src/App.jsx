@@ -2,6 +2,7 @@ import './App.css'
 import "react-chat-elements/dist/main.css"
 import { Input, Button, MessageBox, Avatar } from "react-chat-elements"
 import { useState } from 'react'
+import sendMessage from './services/sendMessage'
 
 const MESSAGE_FROM_LILITH = 1
 const MESSAGE_FROM_USER = 2
@@ -22,8 +23,21 @@ function App() {
       content: event.target[0].value
     }
 
+    getResponseFromLilith(newMessage.content)
     setMessages(messages => messages.concat(newMessage))
     event.target[0].value = ""
+  }
+
+  const getResponseFromLilith = (message) => {
+    sendMessage(message).then( messageFromLilith => {
+
+      let newMessage = {
+        type: MESSAGE_FROM_LILITH,
+        content: messageFromLilith.contenido
+      }
+      
+      setMessages(messages => messages.concat(newMessage)) 
+    })
   }
 
   return (
