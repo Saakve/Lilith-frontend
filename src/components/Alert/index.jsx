@@ -10,7 +10,7 @@ function Alert({header, text , show, onClick}) {
         footerButtons: [
             {
                 color: "white",
-                backgroundColor: "lightgreen",
+                backgroundColor: "lightcoral",
                 text: "OK",
                 onClick: onClick,
             },

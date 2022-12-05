@@ -1,9 +1,19 @@
+import { useState } from 'react'
+
+//React components
+import { Input, Button, MessageBox } from "react-chat-elements"
+import Alert from './components/Alert'
+
+//Services
+import sendMessage from './services/sendMessage'
+
+//Icons from react-icons
+import { BsFillTrashFill } from 'react-icons/bs';
+import { FiSend } from 'react-icons/fi'
+
+//Styles
 import './App.css'
 import "react-chat-elements/dist/main.css"
-import { Input, Button, MessageBox } from "react-chat-elements"
-import { useState } from 'react'
-import sendMessage from './services/sendMessage'
-import Alert from './components/Alert'
 
 const MESSAGE_FROM_LILITH = 1
 const MESSAGE_FROM_USER = 2
@@ -19,9 +29,9 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const input = event.target[0] 
+    const input = event.target[0]
 
-    if(input.value == 0) {
+    if (input.value == 0) {
       setAlertShow(true)
       return
     }
@@ -58,10 +68,17 @@ function App() {
 
   return (
     <div className="App">
+      <Alert
+          header={"Cuidado"}
+          text={"Debes ingresar algún texto"}
+          show={alertIsShow}
+          onClick={handleClickAlert}
+        />
       <div className='lilithArea'>
         <img src="/lilith-image.png" alt="Lilith" />
         <div id='description'>
-          <p>Cuentame tus emociones, deseos, angustias todo lo que sientes. <br /> Estoy aquí para tí 😊 </p>
+
+          <p>Cuentame tus emociones, deseos, angustias todo lo que sientes. <br /> Estoy aquí para tí 😊. </p>
         </div>
       </div>
       <div className='messageArea'>
@@ -74,16 +91,25 @@ function App() {
             text={message.content}
           />
         })}
-        < Alert header={"Cuidado"} text={"Debes ingresar algún texto"} show={alertIsShow} onClick={handleClickAlert} />
       </div>
       <div className='sendArea'>
-        <Button text='Borrar' onClick={handleCleanChat} className="cleanButton" />
+        <Button
+          onClick={handleCleanChat}
+          className="cleanButton"
+          icon={{
+            size: 20,
+            component: <BsFillTrashFill />
+          }}
+        />
         <form onSubmit={handleSubmit}>
           <Input
             placeholder='Ingresa tu mensaje'
             rightButtons={<Button
-              text='Enviar'
               title="Enviar"
+              icon={{
+                size: 20,
+                component: <FiSend />
+              }}
             />}
             className="inputStyle"
           />
