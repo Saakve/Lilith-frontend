@@ -3,6 +3,7 @@ import "react-chat-elements/dist/main.css"
 import { Input, Button, MessageBox } from "react-chat-elements"
 import { useState } from 'react'
 import sendMessage from './services/sendMessage'
+import Alert from './components/Alert'
 
 const MESSAGE_FROM_LILITH = 1
 const MESSAGE_FROM_USER = 2
@@ -14,20 +15,28 @@ const INITIAL_MESSAGE = {
 function App() {
 
   const [messages, setMessages] = useState([INITIAL_MESSAGE])
+  const [alertIsShow, setAlertShow] = useState(false)
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const content = event.target[0].value 
+
+    if(content.length == 0) {
+      setAlertShow(true)
+      return
+    }
+
     let newMessage = {
       type: MESSAGE_FROM_USER,
-      content: event.target[0].value
+      content: content
     }
 
     console.log(newMessage)
 
     getResponseFromLilith(newMessage.content)
     setMessages(messages => messages.concat(newMessage))
-    event.target[0].value = ""
+    content = ""
   }
 
   const getResponseFromLilith = (message) => {
@@ -44,6 +53,10 @@ function App() {
 
   const handleCleanChat = () => {
     setMessages([])
+  }
+
+  const handleClickAlert = () => {
+    setAlertShow(false)
   }
 
   return (
@@ -64,9 +77,10 @@ function App() {
             text={message.content}
           />
         })}
+        < Alert header={"Cuidado"} text={"Debes ingresar algún texto"} show={alertIsShow} onClick={handleClickAlert} />
       </div>
       <div className='sendArea'>
-        <Button text='Borrar' onClick={handleCleanChat} className="cleanButton"/>
+        <Button text='Borrar' onClick={handleCleanChat} className="cleanButton" />
         <form onSubmit={handleSubmit}>
           <Input
             placeholder='Ingresa tu mensaje'
