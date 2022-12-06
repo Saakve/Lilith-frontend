@@ -1,22 +1,20 @@
 import { useState } from 'react'
 
-//React components
-import { Input, Button, MessageBox } from "react-chat-elements"
-import Alert from './components/Alert'
-
 //Services
 import sendMessage from './services/sendMessage'
-
-//Icons from react-icons
-import { BsFillTrashFill } from 'react-icons/bs';
-import { FiSend } from 'react-icons/fi'
 
 //Styles
 import './App.css'
 import "react-chat-elements/dist/main.css"
 
-const MESSAGE_FROM_LILITH = 1
-const MESSAGE_FROM_USER = 2
+//Components
+import MessagesArea from './components/MessagesArea';
+import SendArea from './components/SendArea';
+import Alert from './components/Alert'
+
+//Constants from messages
+import { MESSAGE_FROM_LILITH, MESSAGE_FROM_USER } from './components/MessagesArea';
+
 const INITIAL_MESSAGE = {
   type: MESSAGE_FROM_LILITH,
   content: "Cuentame tus emociones, deseos, angustias todo lo que sientas.\nEstoy aquí para tí 😊."
@@ -58,13 +56,8 @@ function App() {
     })
   }
 
-  const handleCleanChat = () => {
-    setMessages([])
-  }
-
-  const handleClickAlert = () => {
-    setAlertShow(false)
-  }
+  const handleCleanChat = () => { setMessages([]) }
+  const handleClickAlert = () => { setAlertShow(false) }
 
   return (
     <div className="App">
@@ -80,41 +73,8 @@ function App() {
           <h1>Lilith</h1>
         </div>
       </div>
-      <div className='messageArea'>
-        {messages.map((message, index) => {
-          return <MessageBox
-            key={index}
-            position={message.type == MESSAGE_FROM_USER ? "right" : "left"}
-            type={"text"}
-            title={message.type == MESSAGE_FROM_USER ? "Yo" : "Lilith"}
-            text={message.content}
-            className = "message"
-          />
-        })}
-      </div>
-      <div className='sendArea'>
-        <Button
-          onClick={handleCleanChat}
-          className="cleanButton"
-          icon={{
-            size: 20,
-            component: <BsFillTrashFill />
-          }}
-        />
-        <form onSubmit={handleSubmit}>
-          <Input
-            placeholder='Ingresa tu mensaje'
-            rightButtons={<Button
-              title="Enviar"
-              icon={{
-                size: 20,
-                component: <FiSend />
-              }}
-            />}
-            className="inputStyle"
-          />
-        </form>
-      </div>
+      <MessagesArea content={messages} />
+      <SendArea onClean={handleCleanChat} onSubmit={handleSubmit} />
     </div>
   )
 }

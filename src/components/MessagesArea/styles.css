@@ -1,0 +1,14 @@
+.messageArea {
+    background-color: #C9F2EE;
+    width: 100%;
+    flex: 9;
+    overflow-y: auto;
+}
+
+.messageArea div {
+    font-size: medium;
+}
+
+.message > div {
+    max-width: 60%;
+}

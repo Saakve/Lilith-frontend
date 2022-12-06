@@ -1,0 +1,30 @@
+.sendArea {
+    flex: 0.3;
+    width: 100%;
+    background-color: #49a9bf75;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sendArea form {
+    flex: 10;
+}
+
+.sendArea button {
+    font-size: medium;
+}
+
+.cleanButton {
+    margin: 5px;
+    margin-right: 0px;
+}
+
+.inputStyle {
+    padding: 1%;
+    background: none!important;
+}
+
+.inputStyle input {
+    font-size: medium;
+}
