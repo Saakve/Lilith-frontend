@@ -30,7 +30,7 @@ img {
     object-fit: none;
     object-position: top;
     margin: 1vh 12px;
-    box-shadow: 0px 1px 7px tan;
+    box-shadow: 0px 0px 10px white;
 }
 
 .lilithArea #description {
