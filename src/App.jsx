@@ -19,7 +19,7 @@ const MESSAGE_FROM_LILITH = 1
 const MESSAGE_FROM_USER = 2
 const INITIAL_MESSAGE = {
   type: MESSAGE_FROM_LILITH,
-  content: "Hola"
+  content: "Cuentame tus emociones, deseos, angustias todo lo que sientas.\nEstoy aquí para tí 😊."
 }
 
 function App() {
@@ -77,8 +77,7 @@ function App() {
       <div className='lilithArea'>
         <img src="/lilith-image.png" alt="Lilith" />
         <div id='description'>
-
-          <p>Cuentame tus emociones, deseos, angustias todo lo que sientes. <br /> Estoy aquí para tí 😊. </p>
+          <h1>Lilith</h1>
         </div>
       </div>
       <div className='messageArea'>
@@ -89,6 +88,7 @@ function App() {
             type={"text"}
             title={message.type == MESSAGE_FROM_USER ? "Yo" : "Lilith"}
             text={message.content}
+            className = "message"
           />
         })}
       </div>

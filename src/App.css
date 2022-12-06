@@ -1,5 +1,4 @@
 .App {
-    background-color: rgb(184, 209, 209);
     width: 50vw;
     height: 95vh;
     margin: 1% auto;
@@ -16,7 +15,8 @@
     display: flex;
     align-items: center;
     width: 100%;
-    background-color: rgb(253, 253, 253);
+    background-color: #977390;
+    color: white;
 }
 
 img {
@@ -26,6 +26,7 @@ img {
 }
 
 .lilithArea img {
+    background-color: white;
     object-fit: none;
     object-position: top;
     margin: 1vh 12px;
@@ -40,7 +41,12 @@ img {
     font-family: 'Roboto';
 }
 
+.message > div {
+    max-width: 60%;
+}
+
 .messageArea {
+    background-color: #C9F2EE;
     width: 100%;
     flex: 9;
     overflow-y: auto;
@@ -53,7 +59,7 @@ img {
 .sendArea {
     flex: 0.3;
     width: 100%;
-    background-color: rgb(146, 170, 170);
+    background-color: #49a9bf75;
     display: flex;
     justify-content: center;
     align-items: center;
