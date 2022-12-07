@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/?mensaje=";
+const BASE_URL = "http://apililith-env.eba-inciyasf.us-east-1.elasticbeanstalk.com/?mensaje=";
 
 function sendMessage(message) {
     let request = BASE_URL.concat(message)
