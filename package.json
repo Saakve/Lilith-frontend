@@ -1,11 +1,11 @@
 {
-  "name": "lilith-frontend",
+  "name": "Lilith",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp -r dist/* ../Lilith/src/main/resources/public",
     "preview": "vite preview"
   },
   "dependencies": {
